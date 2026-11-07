@@ -1,0 +1,41 @@
+{
+  "name": "human-in-the-harness",
+  "version": "0.1.0",
+  "description": "人間との非同期な相互作用をAIハーネスに組み込むための実行基盤",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "bin": {
+    "hith": "./dist/src/cli.js"
+  },
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./pi": "./dist/src/adapters/pi.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "hith": "node dist/src/cli.js"
+  },
+  "pi": {
+    "extensions": [
+      "./dist/src/adapters/pi.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ieuko/human-in-the-harness.git"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "1.5.0",
+    "@types/node": "26.6.6",
+    "typebox": "1.4.5",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "idempotencyKey": "proposal-example:background-1",
+  "requester": "proposal-example",
+  "recipient": "human",
+  "prompt": "前回の勉強会の反省点を教えてください。覚えていない場合は、その旨を回答してください。",
+  "context": {
+    "題材": "初心者向けAI活用勉強会",
+    "参加者": "20人",
+    "時間": "2時間",
+    "予算": "3万円"
+  },
+  "responseSchema": { "type": "string" },
+  "scope": "proposal-example",
+  "correlation": { "runId": "proposal-example", "stepId": "background-1" }
+}
