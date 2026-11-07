@@ -43,6 +43,8 @@ node dist/src/cli.js events --after 0
 
 ## piで使う
 
+初めて使う場合は[piの起動・ログイン・最初の試行](docs/pi-first-run.md)を参照してください。macOSでは`Piを起動.command`を開くか、プロジェクトのフォルダで`npm run pi`を実行すると、ビルドと拡張の読み込みをまとめて行えます。
+
 ビルド後、piに拡張を読み込ませます。pi 1.5.0でローダーとの適合を確認しています。
 
 ```sh

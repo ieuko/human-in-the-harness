@@ -15,6 +15,7 @@
     "./pi": "./dist/src/adapters/pi.js"
   },
   "scripts": {
+    "pi": "node scripts/start-pi.mjs",
     "build": "tsc",
     "check": "tsc --noEmit",
     "test": "npm run build && node --test dist/tests/*.test.js",
