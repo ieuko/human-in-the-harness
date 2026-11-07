@@ -21,8 +21,10 @@ test("実際のpi 1.5.0のローダーから拡張を読み込める", async t =
   assert.deepEqual(errors, []);
   const extension = extensions.find(item => item.tools.has("human_submit"));
   assert.ok(extension);
-  assert.deepEqual([...extension.tools.keys()].sort(), ["human_amend", "human_cancel", "human_get", "human_submit"]);
+  assert.deepEqual([...extension.tools.keys()].sort(), ["human_amend", "human_cancel", "human_describe", "human_get", "human_submit"]);
   assert.ok(extension.commands.has("human-resume"));
+  assert.ok(extension.commands.has("human-context"));
+  assert.ok(extension.handlers.has("before_agent_start"));
   assert.equal(extension.tools.has("human_respond"), false);
 });
 
@@ -35,6 +37,7 @@ test("人間の入力を同じpiの分岐に一度だけ渡し、別の分岐に
   const branch: SessionEntry[] = [{ id: "origin", type: "custom", customType: "test", data: null, parentId: null, timestamp: new Date().toISOString() }];
   let modelRuns = 0;
   const pi = {
+    on: () => () => {},
     registerTool: (tool: ToolDefinition) => tools.set(tool.name, tool),
     registerCommand: (name: string, command: { handler: (args: string, ctx: ExtensionCommandContext) => Promise<void> }) => commands.set(name, command),
     sendMessage: (message: { customType: string; content: string; display: boolean; details: unknown }, options: { triggerTurn?: boolean }) => {
